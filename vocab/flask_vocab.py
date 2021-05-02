@@ -117,7 +117,7 @@ def check():
         #Using flask.jsonify rather than flask.redirect
         return flask.jsonify(URL=(flask.url_for("success")))
     else:
-       return flask.jsonify(URL=(flask.url_for("keep_going")))
+       return flask.jsonify(match=matches)
 
 
 #################
