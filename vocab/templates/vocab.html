@@ -99,6 +99,36 @@
          {% endif %}
          {% endwith %}
       </div>
+      <div id="result">
+      </div>
       <!-- container -->
+      <script>
+        $("#entry").keyup(function(){
+          //Getting input from the textbox
+          var text = $("#attempt").val();
+          //Get letter by keycode
+          let letter - String.fromCharCode(event.keyCode);
+          //We just need uppercase letters
+          if (letter.toUpperCase() != letter){
+            return "ERROR! Invalid Input";
+          }
+          //Then we will send data to the server through route _check
+          $.GetJSON("/_check", {text: txt}, function(data){
+            value = data.result;
+            match = data.match;
+
+            if (typeof(match)_ !== "undefined"){
+              document.getElementById("result").innerHTML("YOU FOUND:  " + match);
+            }
+
+            if (typeof(URL)_ !== "undefined"){
+              //Window Location Href
+              //The window.location.href property returns the URL of the current page.
+              window.location.href = data.URL;
+            }
+          })
+        })
+
+      </script>
    </body>
 </html>
