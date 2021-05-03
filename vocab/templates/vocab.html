@@ -114,11 +114,7 @@
           var text = $("#attempt").val();
           //Get letter by keycode
           var letter = String.fromCharCode(event.keyCode);
-          //We just need lowercase letters
-		  //Checking the ASCII code of each letter see if it's an lowercase letter or not
-          if (letter.charCodeAt(0) < 97 ||  letter.charCodeAt(0) > 122){
-            return 
-          }
+
           //Get data from the backend through route "_check"
           $.getJSON("/_check/", {text: text}, function(data){		
 			//Debugging code
