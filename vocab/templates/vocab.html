@@ -98,10 +98,10 @@
          {% endfor %}
          {% endif %}
          {% endwith %}
+		<p id="1"></p>
+		<p id="2"></p>
       </div>
 
- <div id="testOutput">
-      </div>
       <!-- container -->
       <script>
 		//Form Submission Handler
@@ -114,25 +114,34 @@
           var text = $("#attempt").val();
           //Get letter by keycode
           var letter = String.fromCharCode(event.keyCode);
-          //We just need uppercase letters
-		  console.log(letter === letter.toUpperCase());
+          //We just need lowercase letters
           if (letter.toUpperCase() !== letter){
             return 
           }
-          //Then we will get data from the server through route _check
+          //Get data from the backend through route "_check"
           $.getJSON("/_check/", {text: text}, function(data){		
-			//Handling CORRECT words
-            if (typeof data.match !== "undefined"){
-              document.getElementById("testOutput").innerHTML("YOU FOUND:  " + data.match);
+			//Debugging code
+			//console.log("Check what inside data " + data);
+			//console.log("Check what inside data.text  " + text);
+			//console.log("Check what inside data.text.match  " + data.match);
+			
+            //This block of code handles INCORRECT words
+			if (typeof data.result !== "undefined"){
+              document.getElementById("1").innerHTML = data.result;
             }
-
+			//This block of code handles CORRECT words
+            if (typeof data.match !== "undefined"){
+              document.getElementById("2").innerHTML = "YOU FOUND:  " + data.match;
+            }
+			//Ref: w3school
             if (typeof data.URL !== "undefined"){
-              //Window Location Href
-              //The window.location.href property returns the URL of the current page.
+              //Window Location Href 
+			  //The window.location.href property returns the URL of the current page.
               window.location.href = data.URL;
             }
           });
         });
-	</script>
+
+      </script>
    </body>
 </html>
