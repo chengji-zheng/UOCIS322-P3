@@ -100,8 +100,10 @@
          {% endwith %}
       </div>
 
+ <div id="testOutput">
+      </div>
       <!-- container -->
-          <script>
+      <script>
 		//Form Submission Handler
 		//Ref: https://api.jquery.com/submit/
 		$("#entry").submit(function(event){
@@ -111,16 +113,17 @@
           //Getting input from the textbox
           var text = $("#attempt").val();
           //Get letter by keycode
-          let letter = String.fromCharCode(event.keyCode);
+          var letter = String.fromCharCode(event.keyCode);
           //We just need uppercase letters
-          if (letter.toUpperCase() != letter){
+		  console.log(letter === letter.toUpperCase());
+          if (letter.toUpperCase() !== letter){
             return 
           }
           //Then we will get data from the server through route _check
           $.getJSON("/_check/", {text: text}, function(data){		
 			//Handling CORRECT words
-            if (typeof match !== "undefined"){
-              document.getElementById("results").innerHTML("YOU FOUND:  " + match);
+            if (typeof data.match !== "undefined"){
+              document.getElementById("testOutput").innerHTML("YOU FOUND:  " + data.match);
             }
 
             if (typeof data.URL !== "undefined"){
@@ -130,6 +133,6 @@
             }
           });
         });
-
+	</script>
    </body>
 </html>
