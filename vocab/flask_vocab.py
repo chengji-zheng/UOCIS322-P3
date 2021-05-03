@@ -74,7 +74,7 @@ def success():
 #   a JSON request handler
 #######################
 
-@app.route("/_check")
+@app.route("/_check/")
 def check():
     """
     User has submitted the form with a word ('attempt')

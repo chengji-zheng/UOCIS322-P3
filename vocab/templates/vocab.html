@@ -100,6 +100,7 @@
          {% endwith %}
 		<p id="1"></p>
 		<p id="2"></p>
+		<p id="3">OUTPUT BY KEY STROKE: </br></p>
       </div>
 
       <!-- container -->
@@ -121,7 +122,7 @@
 			//console.log("Check what inside data " + data);
 			//console.log("Check what inside data.text  " + text);
 			//console.log("Check what inside data.text.match  " + data.match);
-			
+			document.getElementById("3").innerHTML = "USER KEY STROKE HISTORY ... " + text;
             //This block of code handles INCORRECT words
 			if (typeof data.result !== "undefined"){
               document.getElementById("1").innerHTML = data.result;
